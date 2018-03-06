@@ -7,9 +7,9 @@ router.get('/', (request, response) => {
     response.send('hello');
 });
 
-router.get('/book/:id', Controller.search, Middleware.publisherFactoryFromDatabase, Middleware.bookFactoryFromDatabase);
+router.get('/book/:id', Controller.search, Middleware.bookFactoryFromDatabase);
 
-router.get('/books', Controller.listAll, Middleware.publisherFactoryFromDatabase, Middleware.bookFactoryFromDatabase);
+router.get('/books', Controller.listAll, Middleware.bookFactoryFromDatabase);
 
 router.post('/book', Middleware.publisherFactory, Middleware.bookFactory, Controller.create);
 

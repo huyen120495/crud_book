@@ -49,9 +49,12 @@ class BookRepository {
      * @returns {Promise<Book[]>}
     */
     all() {
-        return this.connection('books').select().where({
-            deleted_at : null
-        });
+        return this.connection
+        .select('books.id', 'books.title', 'books.author', 'books.publisher_id', 'books.price', 'publishers.name', 'publishers.address', 'publishers.phonenumber')
+        .from('books')
+        .innerJoin('publishers', function () {
+            this.on('publisher_id', '=', 'publishers.id')
+        }).where('books.deleted_at', null);
     }
 
     /**
@@ -59,10 +62,13 @@ class BookRepository {
      * @returns {Promise<Book>} 
      */
     search(id) {
-        return this.connection('books').select().where({
-            id : id,
-            deleted_at : null
-        });
+        return this.connection
+        .select('books.id', 'books.title', 'books.author', 'books.publisher_id', 'books.price', 'publishers.name', 'publishers.address', 'publishers.phonenumber')
+        .from('books')
+        .innerJoin('publishers', function () {
+            this.on('publisher_id', '=', 'publishers.id')
+        }).where('books.id', id)
+        .where('books.deleted_at', null);
     }
 }
 
