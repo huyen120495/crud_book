@@ -1,5 +1,5 @@
 const Connection = require('../database/connection');
-const Publisher = require('../app/publisher/publisher');
+const Publisher  = require('../app/publisher/publisher');
 
 module.exports = (request, response, next) => {
     Connection('publishers').select().where({id : request.body.publisher_id}).limit(1)
@@ -9,7 +9,6 @@ module.exports = (request, response, next) => {
             publisher.setId(publisherRaw[0].id);
             publisher.setAddress(publisherRaw[0].address);
             publisher.setPhone(publisherRaw[0].phonenumber);
-
             request.body.publisher = publisher;
             next();
         } else {
@@ -17,7 +16,6 @@ module.exports = (request, response, next) => {
             publisher.setId(request.body.publisher_id);
             publisher.setAddress('default');
             publisher.setPhone('default');
-
             request.body.publisher = publisher;
             next();
         }

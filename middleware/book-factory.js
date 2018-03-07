@@ -5,7 +5,6 @@ module.exports = (request, response, next) => {
     book.setId(request.body.id);
     book.setPublisher(request.body.publisher);
     book.setPrice(request.body.price);
-
     request.body.book = book;
     next();
 }

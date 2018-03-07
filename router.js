@@ -1,11 +1,7 @@
-const express = require('express');
-const router = express.Router();
+const express    = require('express');
+const router     = express.Router();
 const Controller = require('./controller');
 const Middleware = require('./middleware');
-
-router.get('/', (request, response) => {
-    response.send('hello');
-});
 
 router.get('/book/:id',Middleware.searchCondition, Controller.search);
 

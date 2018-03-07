@@ -1,7 +1,7 @@
-const AdvanceSearchCondition = require('../app/search-services/advance-search-condition');
-const KeywordSearchCondition = require('../app/search-services/keyword-search-condition');
+const AdvanceSearchCondition   = require('../app/search-services/advance-search-condition');
+const KeywordSearchCondition   = require('../app/search-services/keyword-search-condition');
 const UnDeletedSearchCondition = require('../app/search-services/undeleted-search-condition');
-const IdSearchCondition = require('../app/search-services/id-search-condition');
+const IdSearchCondition        = require('../app/search-services/id-search-condition');
 
 module.exports = (req, res, next) => {
     console.log(req.path);

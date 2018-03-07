@@ -3,10 +3,10 @@
 module.exports = {
 
   development: {
-    client: 'mysql',
-    connection: {
-      host : 'localhost',
-      user : 'root',
+    client     : 'mysql',
+    connection : {
+      host     : 'localhost',
+      user     : 'root',
       password : 'huyen123',
       database : 'book_demo'
     }

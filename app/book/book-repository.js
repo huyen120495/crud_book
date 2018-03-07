@@ -16,19 +16,19 @@ class BookRepository {
     save(book) {
         return book.getId() ? 
             this.connection('books').update({
-                title : book.getTitle(),
-                author : book.getAuthor(),
+                title        : book.getTitle(),
+                author       : book.getAuthor(),
                 publisher_id : book.getPublisher().getId(),
-                price : book.getPrice()
+                price        : book.getPrice()
             }).where({
                 id : book.getId(),
                 deleted_at : null
             }) :
             this.connection('books').insert({
-                title : book.getTitle(),
-                author : book.getAuthor(),
+                title        : book.getTitle(),
+                author       : book.getAuthor(),
                 publisher_id : book.getPublisher().getId(),
-                price : book.getPrice()
+                price        : book.getPrice()
             });
     }
 

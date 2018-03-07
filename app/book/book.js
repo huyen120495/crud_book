@@ -5,19 +5,19 @@ class Book {
      * @param {string} author 
      */
     constructor(title, author) {
-        this.title = title;
+        this.title  = title;
         this.author = author;
     }
 
     /**
-     * @returns {string}
+     * @return {string}
      */
     getTitle() {
         return this.title;
     }
 
     /**
-     * @returns {string}
+     * @return {string}
      */
     getAuthor() {
         return this.author;
@@ -31,7 +31,7 @@ class Book {
     }
 
     /**
-     * @returns {string}
+     * @return {string}
      */
     getPublisher() {
         return this.publisher;
@@ -45,7 +45,7 @@ class Book {
     }
 
     /**
-     * @returns {float}
+     * @return {float}
      */
     getPrice() {
         return this.price;
@@ -59,19 +59,23 @@ class Book {
     }
 
     /**
-     * @returns {int|null}
+     * @return {int|null}
      */
     getId() {
         return this.id;
     }
 
+    /**
+     * 
+     * @return {json}
+     */
     toJson() {
         return {
-            id : this.getId(),
-            title : this.getTitle(),
-            author : this.getAuthor(),
+            id        : this.getId(),
+            title     : this.getTitle(),
+            author    : this.getAuthor(),
             publisher : this.getPublisher().getName(),
-            price : this.getPrice()
+            price     : this.getPrice()
         }
     }
 }
