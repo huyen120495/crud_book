@@ -25,6 +25,7 @@ class Searcher {
         condition.describe(sqlQuery);
         return sqlQuery.then(results => results.map(element => this.factory.make(element)));
     }
+    
 }
 
 module.exports = Searcher;

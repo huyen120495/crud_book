@@ -22,6 +22,7 @@ class KeywordSearchCondition {
                 .orWhere('publishers.name', 'like', '%' + keyword + '%')
             }).where('books.deleted_at', null);
     }
+    
 }
 
 module.exports = KeywordSearchCondition;

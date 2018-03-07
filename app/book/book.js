@@ -78,6 +78,7 @@ class Book {
             price     : this.getPrice()
         }
     }
+    
 }
 
 module.exports = Book;

@@ -12,6 +12,7 @@ class IdSearchCondition {
     describe(sqlQuery) {
         return sqlQuery.where({'books.deleted_at': null, 'books.id': this.bookId})
     }
+    
 }
 
 module.exports = IdSearchCondition;

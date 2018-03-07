@@ -14,7 +14,7 @@ class BookFactoryFromRQ{
     /**
      *
      * @param {Object} bookRaw
-     * @return {Book}
+     * @return {Promise<Book>}
      */
     make(bookRaw) {
         let book = new Book(bookRaw.title, bookRaw.author);
@@ -25,8 +25,8 @@ class BookFactoryFromRQ{
             book.setPublisher(publisher);
             return book;
         });
-
     }
+    
 }
 
 module.exports = BookFactoryFromRQ;

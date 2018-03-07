@@ -23,6 +23,7 @@ class AdvancedSearchCondition {
             .where('publishers.name', 'like', '%' + this.publisher_name + '%')
             .where('books.deleted_at', null)
     }
+    
 }
 
 module.exports = AdvancedSearchCondition;

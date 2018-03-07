@@ -63,6 +63,7 @@ class Publisher {
     getPhone() {
         return this.phone;
     }
+    
 }
 
 module.exports = Publisher;

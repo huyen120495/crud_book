@@ -44,6 +44,7 @@ class BookRepository {
             id : id
         });
     }
+    
 }
 
 module.exports = BookRepository;
