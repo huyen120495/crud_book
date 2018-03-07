@@ -1,6 +1,7 @@
 module.exports = function(request, response) {
-    let repository = request.app.get('book_repository');
-    repository.save(request.body.book).then(() => {
-        response.send({message : 'modify'});
+    request.app.get('book_factory_from_rq').make(request.body).then(book => {
+        request.app.get('book_repository').save(book).then(() => {
+            response.status(201).send({message : 'modify'});
+        });
     });
 }

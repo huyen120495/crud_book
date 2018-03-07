@@ -1,14 +1,14 @@
 const Book      = require('./book');
 const Publisher = require('../publisher/publisher');
 
-class BookFactory{
+class BookFactoryFromDB{
 
     /**
      *
      * @param {Object} bookRaw
      * @return {Book}
      */
-    makeFromDB(bookRaw) {
+    make(bookRaw) {
         let book = new Book(bookRaw.title, bookRaw.author);
         book.setId(bookRaw.id);
         book.setPrice(bookRaw.price);
@@ -21,4 +21,4 @@ class BookFactory{
     }
 }
 
-module.exports = BookFactory;
+module.exports = BookFactoryFromDB;

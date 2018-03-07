@@ -11,9 +11,9 @@ router.get('/search-advance', Middleware.searchCondition, Controller.search);
 
 router.get('/search-basic', Middleware.searchCondition, Controller.search);
 
-router.post('/book', Middleware.publisherFactory, Middleware.bookFactory, Controller.create);
+router.post('/book', Controller.create);
 
-router.put('/book', Middleware.publisherFactory, Middleware.bookFactory, Controller.edit);
+router.put('/book', Controller.edit);
 
 router.delete('/book', Controller.delete);
 

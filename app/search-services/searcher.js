@@ -1,12 +1,9 @@
-const Connection    = require('../../database/connection');
-const BookFactory   = require('../book/book-factory');
-
 class Searcher {
 
     /**
      *
      * @param {Connection} connection
-     * @param {BookFactory} factory
+     * @param {BookFactoryFromDB} factory
      */
     constructor(connection, factory) {
         this.connection = connection;
@@ -26,7 +23,7 @@ class Searcher {
                 this.on('publisher_id', '=', 'publishers.id')
             });
         condition.describe(sqlQuery);
-        return sqlQuery.then(results => results.map(element => this.factory.makeFromDB(element)));
+        return sqlQuery.then(results => results.map(element => this.factory.make(element)));
     }
 }
 

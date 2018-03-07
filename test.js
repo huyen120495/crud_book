@@ -3,12 +3,22 @@ const Book = require('./app/book/book');
 const Connection = require('./database/connection');
 const Publisher = require('./app/publisher/publisher');
 const Search = require('./app/search-services/searcher');
+const BookFactoryFromRQ = require('./app/book/book-factory-from-rq')
 
-let search = new Search(Connection);
+let bookfactory = new BookFactoryFromRQ(Connection);
 
-search.searchAdvance('d', 'a').then(results => {
-    console.log(results);
-});
+let bookRaw = { 'title': 'tieu de',
+'author': 'tac gia',
+'publisher_id': 3,
+'price': 124.95 };
+
+bookfactory.make(bookRaw).then(book => console.log(book));
+
+// let search = new Search(Connection);
+
+// search.searchAdvance('d', 'a').then(results => {
+//     console.log(results);
+// });
 
 // let bookrepo = new BookRepository(Connection);
 
