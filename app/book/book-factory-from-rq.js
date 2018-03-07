@@ -1,5 +1,5 @@
-const Book      = require('./book');
-const Publisher = require('../publisher/publisher');
+const Book       = require('./book');
+const Publisher  = require('../publisher/publisher');
 const Connection = require('../../database/connection');
 
 class BookFactoryFromRQ{

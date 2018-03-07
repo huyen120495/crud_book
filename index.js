@@ -1,12 +1,12 @@
-const express        = require('express');
-const app            = express();
-const bodyParser     = require('body-parser');
-const router         = require('./router');
-const BookRepository = require('./app/book/book-repository');
-const Connection     = require('./database/connection');
+const express           = require('express');
+const app               = express();
+const bodyParser        = require('body-parser');
+const router            = require('./router');
+const BookRepository    = require('./app/book/book-repository');
+const Connection        = require('./database/connection');
 const BookFactoryFromDB = require('./app/book/book-factory-from-db');
 const BookFactoryFromRQ = require('./app/book/book-factory-from-rq')
-const Searcher       = require('./app/search-services/searcher');
+const Searcher          = require('./app/search-services/searcher');
 
 app.set('book_repository', new BookRepository(Connection));
 app.set('book_searcher', new Searcher(Connection, new BookFactoryFromDB()));
