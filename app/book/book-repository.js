@@ -44,32 +44,6 @@ class BookRepository {
             id : id
         });
     }
-
-    /**
-     * @returns {Promise<Book[]>}
-    */
-    all() {
-        return this.connection
-        .select('books.id', 'books.title', 'books.author', 'books.publisher_id', 'books.price', 'publishers.name', 'publishers.address', 'publishers.phonenumber')
-        .from('books')
-        .innerJoin('publishers', function () {
-            this.on('publisher_id', '=', 'publishers.id')
-        }).where('books.deleted_at', null);
-    }
-
-    /**
-     * @param {int} id
-     * @returns {Promise<Book>} 
-     */
-    search(id) {
-        return this.connection
-        .select('books.id', 'books.title', 'books.author', 'books.publisher_id', 'books.price', 'publishers.name', 'publishers.address', 'publishers.phonenumber')
-        .from('books')
-        .innerJoin('publishers', function () {
-            this.on('publisher_id', '=', 'publishers.id')
-        }).where('books.id', id)
-        .where('books.deleted_at', null);
-    }
 }
 
 module.exports = BookRepository;

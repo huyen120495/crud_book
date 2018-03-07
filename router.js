@@ -7,9 +7,13 @@ router.get('/', (request, response) => {
     response.send('hello');
 });
 
-router.get('/book/:id', Controller.search, Middleware.bookFactoryFromDatabase);
+router.get('/book/:id',Middleware.searchCondition, Controller.search);
 
-router.get('/books', Controller.listAll, Middleware.bookFactoryFromDatabase);
+router.get('/books', Middleware.searchCondition, Controller.search);
+
+router.get('/search-advance', Middleware.searchCondition, Controller.search);
+
+router.get('/search-basic', Middleware.searchCondition, Controller.search);
 
 router.post('/book', Middleware.publisherFactory, Middleware.bookFactory, Controller.create);
 

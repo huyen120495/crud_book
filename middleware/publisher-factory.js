@@ -13,7 +13,13 @@ module.exports = (request, response, next) => {
             request.body.publisher = publisher;
             next();
         } else {
-            response.send({massage : 'fail'});
+            let publisher = new Publisher('default');
+            publisher.setId(request.body.publisher_id);
+            publisher.setAddress('default');
+            publisher.setPhone('default');
+
+            request.body.publisher = publisher;
+            next();
         }
     });
 }
