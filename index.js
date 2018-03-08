@@ -5,7 +5,7 @@ const router            = require('./router');
 const BookRepository    = require('./app/book/book-repository');
 const Connection        = require('./database/connection');
 const BookFactoryFromDB = require('./app/book/book-factory-from-db');
-const BookFactoryFromRQ = require('./app/book/book-factory-from-rq')
+const BookFactoryFromRQ = require('./app/book/book-factory-from-rq');
 const PublisherProvider = require('./app/publisher/publisher-provider');
 const Searcher          = require('./app/search-services/searcher');
 

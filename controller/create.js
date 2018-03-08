@@ -4,4 +4,4 @@ module.exports = function(request, response) {
             response.status(201).send({message : 'created'});
         });
     })
-}
+};

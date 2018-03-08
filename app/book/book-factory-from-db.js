@@ -19,6 +19,7 @@ class BookFactoryFromDB{
         book.setPublisher(publisher);
         return book;
     }
+
 }
 
 module.exports = BookFactoryFromDB;
