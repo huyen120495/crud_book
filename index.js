@@ -11,7 +11,7 @@ const Searcher          = require('./app/search-services/searcher');
 
 app.set('book_repository', new BookRepository(Connection));
 app.set('book_searcher', new Searcher(Connection, new BookFactoryFromDB()));
-app.set('book_factory_from_db', new BookFactoryFromRQ(new PublisherProvider(Connection)));
+app.set('book_factory_from_rq', new BookFactoryFromRQ(new PublisherProvider(Connection)));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));

@@ -1,8 +1,10 @@
+const Connection = require('../../database/connection');
+
 class BookRepository {
     
     /**
      * 
-     * @param {*} connection 
+     * @param {Connection} connection 
      */
     constructor(connection) {
         this.connection = connection;

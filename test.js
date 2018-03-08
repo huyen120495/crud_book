@@ -1,16 +1,17 @@
-const BookRepository = require('./app/book/book-repository');
-const Book = require('./app/book/book'); 
-const Connection = require('./database/connection');
-const Publisher = require('./app/publisher/publisher');
-const Search = require('./app/search-services/searcher');
-const BookFactoryFromRQ = require('./app/book/book-factory-from-rq')
+const BookRepository    = require('./app/book/book-repository');
+const Book              = require('./app/book/book'); 
+const Connection        = require('./database/connection');
+const Publisher         = require('./app/publisher/publisher');
+const Search            = require('./app/search-services/searcher');
+const BookFactoryFromRQ = require('./app/book/book-factory-from-rq');
+const PublisherProvider = require('./app/publisher/publisher-provider');
 
-let bookfactory = new BookFactoryFromRQ(Connection);
+let bookfactory = new BookFactoryFromRQ(new PublisherProvider(Connection));
 
-let bookRaw = { 'title': 'tieu de',
-'author': 'tac gia',
-'publisher_id': 3,
-'price': 124.95 };
+let bookRaw = { 'title'        : 'tieu de',
+                'author'       : 'tac gia',
+                'publisher_id' : 3,
+                'price'        : 124.95 };
 
 bookfactory.make(bookRaw).then(book => console.log(book));
 

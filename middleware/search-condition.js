@@ -3,9 +3,9 @@ const KeywordSearchCondition   = require('../app/search-services/keyword-search-
 const UnDeletedSearchCondition = require('../app/search-services/undeleted-search-condition');
 const IdSearchCondition        = require('../app/search-services/id-search-condition');
 
-module.exports = (req, res, next) => {
-    console.log(req.path);
-    req.condition = makeCondition(req);
+module.exports = (request, response, next) => {
+    console.log(request.path);
+    request.condition = makeCondition(request);
     next();
 };
 

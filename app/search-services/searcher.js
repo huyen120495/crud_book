@@ -1,3 +1,6 @@
+const Connection        = require('../../database/connection');
+const BookFactoryFromDB = require('../book/book-factory-from-db');
+
 class Searcher {
 
     /**

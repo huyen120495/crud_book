@@ -1,11 +1,12 @@
-const Book       = require('./book');
-const Connection = require('../../database/connection');
+const Book              = require('./book');
+const Connection        = require('../../database/connection');
+const PublisherProvider = require('../publisher/publisher-provider');
 
 class BookFactoryFromRQ{
 
     /**
      * 
-     * @param {Connection} connection 
+     * @param {PublisherProvider} publisher_provider 
      */
     constructor(publisher_provider) {
         this.publisher_provider = publisher_provider;

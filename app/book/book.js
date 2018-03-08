@@ -1,3 +1,5 @@
+const Publisher = require('../publisher/publisher');
+
 class Book {
     
     /**

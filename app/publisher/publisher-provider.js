@@ -1,7 +1,12 @@
-const Publisher = require('../publisher/publisher');
+const Connection = require('../../database/connection');
+const Publisher  = require('../publisher/publisher');
 
 class PublisherProvider {
 
+    /**
+     * 
+     * @param {Connection} connection
+     */
     constructor(connection) {
         this.connection = connection;
     }

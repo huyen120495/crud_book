@@ -11,7 +11,7 @@ class KeywordSearchCondition {
     /**
      *
      * @param sqlQuery
-     * @return {Book[]}
+     * @return {Promise<Book[]>}
      */
     describe(sqlQuery) {
         let keyword = this.keyword;

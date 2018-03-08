@@ -1,5 +1,9 @@
 class IdSearchCondition {
 
+    /**
+     * 
+     * @param {int} bookId 
+     */
     constructor(bookId) {
         this.bookId = bookId;
     }
@@ -7,7 +11,7 @@ class IdSearchCondition {
     /**
      *
      * @param sqlQuery
-     * @return {Book[]}
+     * @return {Promise<Book[]>}
      */
     describe(sqlQuery) {
         return sqlQuery.where({'books.deleted_at': null, 'books.id': this.bookId})
