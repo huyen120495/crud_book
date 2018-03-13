@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Save Book</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/book">Create</a>
+        <a href="/search">Search</a>
+    </nav>
+    <section>
+        <form action="/book" method="post">
+            <div>
+                <label for="title">title</label>
+                <input id="title" type="text" name="title">
+            </div>
+            <div>
+                <label for="author">author</label>
+                <input id="author" type="text" name="author">
+            </div>
+            <div>
+                <label for="publisher_id">publisher</label>
+                <select name="publisher_id" id="publisher_id">
+                    <option value="">publisher 1</option>
+                    <option value="">publisher 2</option>
+                    <option value="">publisher 3</option>
+                    <option value="">publisher 4</option>
+                </select>
+            </div>
+            <div>
+                <label for="price">price</label>
+                <input id="price" type="number" name="price">
+            </div>
+            <div>
+                <input type="submit" value="Save">
+            </div>
+        </form>
+    </section>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/book">Create</a>
+        <a href="/search">Search</a>
+    </nav>
+    <section>
+        <form action="/search-advance" method="get">
+            <div>
+                <label for="title">title</label>
+                <input id="title" type="text" name="title">
+            </div>
+            <div>
+                <label for="author">author</label>
+                <input id="author" type="text" name="author">
+            </div>
+            <div>
+                <label for="publisher">publisher</label>
+                <input id="publisher" type="text" name="publisher">
+            </div>
+            <div>
+                <input type="submit" value="Search">
+            </div>
+        </form>
+    </section>
+</body>
+</html>
