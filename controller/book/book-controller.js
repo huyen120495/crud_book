@@ -7,10 +7,10 @@ class BookController {
      * @param next
      */
     create(request, response, next) {
-        request.app.get('book_repository').add(request.book).then(function () {
-            response.status(201).send({message: "Success!"});
-        }).catch(function (err) {
-            next(err);
+        request.app.get('book_factory_from_rq').make(request.body).then(book => {
+            request.app.get('book_repository').save(book).then(() => {
+                response.redirect('/');
+            });
         });
     }
 
@@ -31,10 +31,10 @@ class BookController {
      * @param response
      */
     edit(request, response, next) {
-        request.app.get('book_repository').edit(request.book).then(function () {
-            response.status(200).json({message:'Success'});
-        }).catch(function (err) {
-            next(err)
+        request.app.get('book_factory_from_rq').make(request.body).then(book => {
+            request.app.get('book_repository').save(book).then(() => {
+                response.redirect('/');
+            });
         });
     }
 
