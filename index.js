@@ -10,7 +10,8 @@ const PublisherProvider = require('./app/publisher/publisher-provider');
 const Searcher          = require('./app/search-services/searcher');
 const nunjucks          = require('nunjucks');
 
-app.use(express.static('./public'));
+let publisherProvider = new PublisherProvider(Connection);
+
 app.set('views','./views');
 
 nunjucks.configure('views', {
@@ -20,7 +21,8 @@ nunjucks.configure('views', {
 
 app.set('book_repository', new BookRepository(Connection));
 app.set('book_searcher', new Searcher(Connection, new BookFactoryFromDB()));
-app.set('book_factory_from_rq', new BookFactoryFromRQ(new PublisherProvider(Connection)));
+app.set('book_factory_from_rq', new BookFactoryFromRQ(publisherProvider));
+app.set('publisher_provider', publisherProvider);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));

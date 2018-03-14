@@ -23,7 +23,9 @@ router.get('/search', (req, res) => {
 });
 
 router.get('/book', (req, res) => {
-    res.render('save.html');
+    req.app.get('publisher_provider').all().then(publishers => {
+        res.render('save.html', {publishers: publishers});
+    })
 });
 
 router.get('/book/delete/:id',bookController.delete);

@@ -30,5 +30,13 @@ class PublisherProvider {
         });
     }
 
+    /**
+     * 
+     * @return {Promise<Publisher[]>}
+     */
+    all() {
+        return this.connection('publishers');
+    }
+
 }
 module.exports = PublisherProvider;

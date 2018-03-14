@@ -6,7 +6,7 @@
     <nav>
         <a href="/">Home</a>
         <a href="/book">Create</a>
-        <a href="/search">Search</a>
+        <a href="/search">Search Advance</a>
     </nav>
     <section>
         <form action="/book" method="post">
@@ -21,10 +21,9 @@
             <div>
                 <label for="publisher_id">publisher</label>
                 <select name="publisher_id" id="publisher_id">
-                    <option value="">publisher 1</option>
-                    <option value="">publisher 2</option>
-                    <option value="">publisher 3</option>
-                    <option value="">publisher 4</option>
+                    {% for publisher in publishers %}
+                    <option value="{{publisher.id}}">{{publisher.name}}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div>
