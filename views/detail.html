@@ -8,30 +8,42 @@
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/book">Create</a>
-        <a href="/search">Search Advance</a>
-    </nav>
-    <section>
-        <h1>
-            {{book.getTitle()}}
-        </h1>
-        <small>
-            {{book.getAuthor()}}
-        </small>
-        <small>
-            {{book.getPublisher().getId()}}
-        </small>
-        <small>
-            {{book.getPrice()}}
-        </small>
-        <div>
-            <a href="/edit/{{book.getId()}}">Edit</a>
-        <a href="/book/delete/{{book.getId()}}">Delete</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <header>
+                    <h1>Books <span class="badge badge-secondary">Detail</span></h1>
+                </header>
+                <nav class="nav justify-content-center">
+                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/book">Create</a>
+                    <a class="nav-link" href="/search">Search Advance</a>
+                </nav>
+                <section>
+                    <h1>
+                        {{book.getTitle()}}
+                    </h1>
+                    <small>
+                        {{book.getAuthor()}}
+                    </small>
+                    <small>
+                        {{book.getPublisher().getId()}}
+                    </small>
+                    <small>
+                        {{book.getPrice()}}
+                    </small>
+                    <div>
+                        <a href="/edit/{{book.getId()}}">Edit</a>
+                    <a href="/book/delete/{{book.getId()}}">Delete</a>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-3"></div>
         </div>
-    </section>
+    </div>
 </body>
 </html>

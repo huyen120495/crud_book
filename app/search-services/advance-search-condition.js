@@ -21,7 +21,7 @@ class AdvancedSearchCondition {
         return sqlQuery.where('books.author', 'like', '%' + this.author + '%')
             .where('books.title', 'like', '%' + this.title + '%')
             .where('publishers.name', 'like', '%' + this.publisher_name + '%')
-            .where('books.deleted_at', null)
+            .where('books.deleted_at', null);
     }
     
 }

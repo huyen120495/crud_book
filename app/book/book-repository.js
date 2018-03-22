@@ -59,7 +59,8 @@ class BookRepository {
         .innerJoin('publishers', function () {
             this.on('publisher_id', '=', 'publishers.id')
         }).where({
-            'books.id' : id
+            'books.id' : id,
+            'books.deleted_at' : null
         })
     }
     

@@ -10,11 +10,10 @@ const PublisherProvider = require('./app/publisher/publisher-provider');
 const Searcher          = require('./app/search-services/searcher');
 const nunjucks          = require('nunjucks');
 
-let publisherProvider    = new PublisherProvider(Connection);
+let publisherProvider = new PublisherProvider(Connection);
 let bookFactoryFromDB = new BookFactoryFromDB();
 
 app.set('views','./views');
-
 nunjucks.configure('views', {
     autoescape: true,
     express: app

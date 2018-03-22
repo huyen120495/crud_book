@@ -12,15 +12,15 @@
         <form action="/book" method="post">
             <div>
                 <label for="id">id</label>
-                <input id="id" type="text" name="id" value="{{detail.id}}">
+                <input id="id" type="text" name="id" value="{{bookDetail.id}}">
             </div>
             <div>
                 <label for="title">title</label>
-                <input id="title" type="text" name="title" value="{{detail.title}}">
+                <input id="title" type="text" name="title" value="{{bookDetail.title}}">
             </div>
             <div>
                 <label for="author">author</label>
-                <input id="author" type="text" name="author" value="{{detail.author}}">
+                <input id="author" type="text" name="author" value="{{bookDetail.author}}">
             </div>
             <div>
                 <label for="publisher_id">publisher</label>
@@ -32,7 +32,7 @@
             </div>
             <div>
                 <label for="price">price</label>
-                <input id="price" type="number" name="price" value="{{detail.price}}">
+                <input id="price" type="number" name="price" value="{{bookDetail.price}}">
             </div>
             <div>
                 <input type="submit" value="Edit">

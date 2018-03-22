@@ -11,6 +11,7 @@
         crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="./script.js"></script>
 </head>
 <body>
     <div class="container">
@@ -50,37 +51,7 @@
     
 </body>
 </html>
-<script>
-        $(document).ready(function() {
-            $('#search-advance').click(searchadvance);
-        }); 
-    
-        function searchbasic(){
-            var keyword = $('#keyword').val();
-            return $.get("/search-basic?keyword=" + keyword)
-            .then(books => {
-                var template = $('#bookTemplate').html();
-                var resultsHTML = books.map(function (book) {
-                    return template.replace(':title:', book.title).replace(':author:', book.author).replace(':id:', book.id)
-                }).join('');
-                $('#viewBooks').html(resultsHTML);
-            })
-        }
 
-        function searchadvance() {
-            return $.get('/search-advance', {
-                title : $('#title').val(),
-                author : $('#author').val(),
-                publisher : $('#publisher').val()
-            }).then(books => {
-                var template = $('#bookTemplate').html();
-                var resultsHTML = books.map(function (book) {
-                    return template.replace(':title:', book.title).replace(':author:', book.author).replace(':id:', book.id)
-                }).join('');
-                $('#viewBooks').html(resultsHTML);
-            })
-        }
-    </script>
-    <script id="bookTemplate" type="text/html">
-        <li class="list-group-item"><a href="/book/:id:">:title: - :author:</a></li>
-    </script>
+<script id="bookTemplate" type="text/html">
+    <li class="list-group-item"><a href="/book/:id:">:title: - :author:</a></li>
+</script>
