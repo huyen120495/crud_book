@@ -5,31 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/book">Create</a>
-        <a href="/search">Search Advance</a>
-    </nav>
-    <section>
-        <form action="/search-advance" method="get">
-            <div>
-                <label for="title">title</label>
-                <input id="title" type="text" name="title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <header>
+                    <h1>Books <span class="badge badge-secondary">Search-Advance</span></h1>
+                </header>
+                <nav class="nav justify-content-center">
+                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/book">Create</a>
+                    <a class="nav-link" href="/search">Search Advance</a>
+                </nav>
+                <section>
+                    <div class="form-group">
+                        <label for="title">Title :</label>
+                        <input id="title" type="text" name="title" class="form-control" placeholder="Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Author :</label>
+                        <input id="author" type="text" name="author" class="form-control" placeholder="Author">
+                    </div>
+                    <div class="form-group">
+                        <label for="publisher">Publisher :</label>
+                        <input id="publisher" type="text" name="publisher" class="form-control" placeholder="Publisher">
+                    </div>
+                    <div>
+                        <input type="button" value="Search" id="search-advance" class="btn btn-primary btn-lg btn-block">
+                    </div>
+                </section>
+                <ul id="viewBooks" class="list-group list-group-flush"></ul>
             </div>
-            <div>
-                <label for="author">author</label>
-                <input id="author" type="text" name="author">
-            </div>
-            <div>
-                <label for="publisher">publisher</label>
-                <input id="publisher" type="text" name="publisher">
-            </div>
-            <div>
-                <input type="submit" value="Search">
-            </div>
-        </form>
-    </section>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    
 </body>
 </html>
+<script>
+        $(document).ready(function() {
+            $('#search-advance').click(searchadvance);
+        }); 
+    
+        function searchbasic(){
+            var keyword = $('#keyword').val();
+            return $.get("/search-basic?keyword=" + keyword)
+            .then(books => {
+                var template = $('#bookTemplate').html();
+                var resultsHTML = books.map(function (book) {
+                    return template.replace(':title:', book.title).replace(':author:', book.author).replace(':id:', book.id)
+                }).join('');
+                $('#viewBooks').html(resultsHTML);
+            })
+        }
+
+        function searchadvance() {
+            return $.get('/search-advance', {
+                title : $('#title').val(),
+                author : $('#author').val(),
+                publisher : $('#publisher').val()
+            }).then(books => {
+                var template = $('#bookTemplate').html();
+                var resultsHTML = books.map(function (book) {
+                    return template.replace(':title:', book.title).replace(':author:', book.author).replace(':id:', book.id)
+                }).join('');
+                $('#viewBooks').html(resultsHTML);
+            })
+        }
+    </script>
+    <script id="bookTemplate" type="text/html">
+        <li class="list-group-item"><a href="/book/:id:">:title: - :author:</a></li>
+    </script>

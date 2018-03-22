@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Detail</title>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
 </head>
 <body>
     <nav>
@@ -18,13 +23,13 @@
             {{book.getAuthor()}}
         </small>
         <small>
-            {{book.getPublisher().getName()}}
+            {{book.getPublisher().getId()}}
         </small>
         <small>
             {{book.getPrice()}}
         </small>
         <div>
-            <a href="/book">Edit</a>
+            <a href="/edit/{{book.getId()}}">Edit</a>
         <a href="/book/delete/{{book.getId()}}">Delete</a>
         </div>
     </section>

@@ -14,9 +14,5 @@ function makeCondition(request) {
         return new AdvanceSearchCondition(request.query.title, request.query.author, request.query.publisher);
     } else if (request.path === '/search-basic'){
         return new KeywordSearchCondition(request.query.keyword);
-    } else if (request.path === '/books'){
-        return new UnDeletedSearchCondition();
-    } else if (request.path.toString().startsWith('/book/')) {
-        return new IdSearchCondition(request.params.id);
-    }
+    } 
 }

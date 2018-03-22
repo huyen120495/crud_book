@@ -4,29 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Home</title>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/book">Create</a>
-        <a href="/search">Search Advance</a>
-    </nav>
-    <div>
-        <form action="/search-basic" method="get">
-            <input type="text" name="keyword">
-            <input type="submit" value="Search">
-        </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <header>
+                    <h1>Books <span class="badge badge-secondary">Home</span></h1>
+                </header>
+                <nav class="nav justify-content-center">
+                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/book">Create</a>
+                    <a class="nav-link" href="/search">Search Advance</a>
+                </nav>
+                <div class="row">
+                    <div class="col-sm-10"><input name="keyword" id="keyword" class="form-control" type="search" placeholder="Search" aria-label="Search"></div>
+                    <div class="col-sm-2"><input type="button" value="Search" onclick="searchbasic()" class="btn btn-outline-success"></div>
+                </div>
+                <section>
+                    <ul id="viewBooks" class="list-group list-group-flush">
+                        {% for book in books %}
+                        <li class="list-group-item">
+                            <a href="/book/{{book.getId()}}">{{book.getTitle()}}-{{book.getPublisher().getName()}} </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
     </div>
-    <section>
-        <h1>BOOKS</h1>
-        <ul>
-            {% for book in books %}
-            <li>
-                <a href="/book/{{book.getId()}}">{{book.getTitle()}}-{{book.getPublisher().getName()}} </a>
-            </li>
-            {% endfor %}
-        </ul>
-    </section>
 </body>
 </html>
+<script>
+    $(document).ready(function() {
+        $('#keyword').change(searchbasic);
+    }); 
+
+    function searchbasic(){
+        var keyword = $('#keyword').val();
+        return $.get("/search-basic?keyword=" + keyword)
+        .then(books => {
+            var template = $('#bookTemplate').html();
+            var resultsHTML = books.map(function (book) {
+                return template.replace(':title:', book.title).replace(':author:', book.author).replace(':id:', book.id)
+            }).join('');
+            $('#viewBooks').html(resultsHTML);
+        })
+    }
+</script>
+<script id="bookTemplate" type="text/html">
+    <li class="list-group-item"><a href="/book/:id:">:title: - :author:</a></li>
+</script>

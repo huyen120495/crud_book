@@ -16,7 +16,7 @@ class PublisherProvider {
      * @param {int} publisher_id 
      * @return {Promise<Publisher|null>}
      */
-    make(publisher_id) {
+    provide(publisher_id) {
         return this.connection('publishers').where({id : publisher_id}).limit(1)
         .then(publishers => {
             if (publishers[0]) {

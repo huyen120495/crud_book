@@ -21,7 +21,7 @@ class BookFactoryFromRQ{
         let book = new Book(bookRaw.title, bookRaw.author);
         book.setId(bookRaw.id);
         book.setPrice(bookRaw.price);
-        return this.publisher_provider.make(bookRaw.publisher_id)
+        return this.publisher_provider.provide(bookRaw.publisher_id)
         .then(publisher => {
             book.setPublisher(publisher);
             return book;

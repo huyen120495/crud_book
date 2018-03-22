@@ -13,10 +13,7 @@ let checkData = [
     Middleware.checkTitleNull
 ];
 
-router.get('/', (request, response, next) => {
-    request.condition = new UndeletedSearchCondition();
-    next();
-}, bookController.search);
+router.get('/', bookController.all);
 
 router.get('/search', (req, res) => {
     res.render('search.html');
@@ -28,16 +25,23 @@ router.get('/book', (req, res) => {
     })
 });
 
+router.get('/edit/:id', (req, res) => {
+    req.condition = new IdSearchCondition(req.params.id);
+    let detail = req.app.get('book_searcher').search(req.condition);
+    let publishers = req.app.get('publisher_provider').all();
+    Promise.all([detail, publishers]).then(bookEdit => {
+        res.render('edit.html', {
+            detail: bookEdit[0][0],
+            publishers: bookEdit[1]
+        });
+    })
+});
+
 router.get('/book/delete/:id',bookController.delete);
 
-router.get('/book/:id', function (req, res, next) {
-    req.condition = new IdSearchCondition(req.params.id);
-    next();
-}, bookController.detail);
+router.get('/book/:id', bookController.detail);
 
-router.post('/book', checkData, bookController.create);
-
-router.put('/book', checkData, bookController.edit);
+router.post('/book', checkData, bookController.save);
 
 router.delete('/book/:id', bookController.delete);
 

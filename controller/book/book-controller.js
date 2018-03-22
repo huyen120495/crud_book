@@ -4,9 +4,8 @@ class BookController {
      *
      * @param request
      * @param response
-     * @param next
      */
-    create(request, response, next) {
+    save(request, response) {
         request.app.get('book_factory_from_rq').make(request.body).then(book => {
             request.app.get('book_repository').save(book).then(() => {
                 response.redirect('/');
@@ -30,41 +29,32 @@ class BookController {
      * @param request
      * @param response
      */
-    edit(request, response, next) {
-        request.app.get('book_factory_from_rq').make(request.body).then(book => {
-            request.app.get('book_repository').save(book).then(() => {
-                response.redirect('/');
-            });
-        });
+    search(request, response) {
+        request.app.get('book_searcher').search(request.condition)
+            .then(books => response.send(books))
     }
 
     /**
      *
      * @param request
      * @param response
-     * @param next
      */
-    search(request, response, next) {
-        request.app.get('book_searcher').search(request.condition)
-            .then(books => response.render('listbook.html',{books:books}))
-            .catch(next)
+    detail(request, response) {
+        request.app.get('book_repository').detail(request.params.id)
+            .then(books => books.map(book => request.app.get('book_factory_from_db').make(book)))
+            .then(books => response.render('detail.html',{book:books[0]}))
+            
     }
 
     /**
      *
      * @param request
      * @param response
-     * @param next
      */
-    detail(request, response, next) {
-        request.app.get('book_searcher').search(request.condition)
-            .then(books => {
-                if (!books.length) {
-                    throw new Error('no book');
-                }
-                response.render('detail.html', {book: books[0]})
-            })
-            .catch(next)
+    all(request, response) {
+        request.app.get('book_repository').all()
+            .then(books => books.map(book => request.app.get('book_factory_from_db').make(book)))
+            .then(books => response.render('listbook.html', {books : books}))
     }
 
 }
