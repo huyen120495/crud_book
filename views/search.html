@@ -16,15 +16,14 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-3"></div>
             <div class="col-md-6">
                 <header>
-                    <h1>Books <span class="badge badge-secondary">Search-Advance</span></h1>
+                    <h1>Books <span class="badge badge-pill badge-secondary">Search-Advance</span></h1>
                 </header>
                 <nav class="nav justify-content-center">
                     <a class="nav-link" href="/">Home</a>
                     <a class="nav-link" href="/book">Create</a>
-                    <a class="nav-link" href="/search">Search Advance</a>
+                    <a class="nav-link disabled" href="/search">Search Advance</a>
                 </nav>
                 <section>
                     <div class="form-group">
@@ -40,12 +39,13 @@
                         <input id="publisher" type="text" name="publisher" class="form-control" placeholder="Publisher">
                     </div>
                     <div>
-                        <input type="button" value="Search" id="search-advance" class="btn btn-primary btn-lg btn-block">
+                        <input type="button" value="Search" id="search-advance" class="btn btn-primary">
                     </div>
                 </section>
-                <ul id="viewBooks" class="list-group list-group-flush"></ul>
+                <section>
+                    <ul id="viewBooks" class="list-group list-group-flush"></ul>
+                </section>
             </div>
-            <div class="col-md-3"></div>
         </div>
     </div>
     

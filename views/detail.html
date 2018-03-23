@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Detail</title>
-    <script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+        </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-3"></div>
             <div class="col-md-6">
                 <header>
                     <h1>Books <span class="badge badge-secondary">Detail</span></h1>
@@ -27,22 +28,21 @@
                     <h1>
                         {{book.getTitle()}}
                     </h1>
-                    <small>
+                    <p>
                         {{book.getAuthor()}}
-                    </small>
-                    <small>
+                    </p>
+                    <p>
                         {{book.getPublisher().getId()}}
-                    </small>
-                    <small>
+                    </p>
+                    <p>
                         {{book.getPrice()}}
-                    </small>
+                    </p>
                     <div>
-                        <a href="/edit/{{book.getId()}}">Edit</a>
-                    <a href="/book/delete/{{book.getId()}}">Delete</a>
+                        <a href="/edit/{{book.getId()}}" class="btn btn-primary">Edit</a>
+                    <a href="/book/delete/{{book.getId()}}" class="btn btn-primary">Delete</a>
                     </div>
                 </section>
             </div>
-            <div class="col-md-3"></div>
         </div>
     </div>
 </body>
