@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('#keyword').change(searchbasic);
+    $('#search-basic').click(searchbasic);
     $('#search-advance').click(searchadvance);
 }); 
 

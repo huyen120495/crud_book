@@ -15,7 +15,7 @@ class BookFactoryFromDB{
         let publisher = new Publisher(bookRaw.name);
         publisher.setId(bookRaw.publisher_id);
         publisher.setAddress(bookRaw.address);
-        publisher.setPhone(bookRaw.phone);
+        publisher.setPhone(bookRaw.phonenumber);
         book.setPublisher(publisher);
         return book;
     }

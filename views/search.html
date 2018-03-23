@@ -1,57 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="./script.js"></script>
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <header>
-                    <h1>Books <span class="badge badge-pill badge-secondary">Search-Advance</span></h1>
-                </header>
-                <nav class="nav justify-content-center">
-                    <a class="nav-link" href="/">Home</a>
-                    <a class="nav-link" href="/book">Create</a>
-                    <a class="nav-link disabled" href="/search">Search Advance</a>
-                </nav>
-                <section>
-                    <div class="form-group">
-                        <label for="title">Title :</label>
-                        <input id="title" type="text" name="title" class="form-control" placeholder="Title">
-                    </div>
-                    <div class="form-group">
-                        <label for="author">Author :</label>
-                        <input id="author" type="text" name="author" class="form-control" placeholder="Author">
-                    </div>
-                    <div class="form-group">
-                        <label for="publisher">Publisher :</label>
-                        <input id="publisher" type="text" name="publisher" class="form-control" placeholder="Publisher">
-                    </div>
-                    <div>
-                        <input type="button" value="Search" id="search-advance" class="btn btn-primary">
-                    </div>
-                </section>
-                <section>
-                    <ul id="viewBooks" class="list-group list-group-flush"></ul>
-                </section>
-            </div>
-        </div>
-    </div>
-    
-</body>
-</html>
+{% extends 'listbook.html' %}
 
-<script id="bookTemplate" type="text/html">
-    <li class="list-group-item"><a href="/book/:id:">:title: - :author:</a></li>
-</script>
+{% block Home %}
+Search Advance
+{% endblock %}
+
+{% block content %}
+<section>
+    <div class="form-group">
+        <label for="title">Title :</label>
+        <input id="title" type="text" name="title" class="form-control" placeholder="Title">
+    </div>
+    <div class="form-group">
+        <label for="author">Author :</label>
+        <input id="author" type="text" name="author" class="form-control" placeholder="Author">
+    </div>
+    <div class="form-group">
+        <label for="publisher">Publisher :</label>
+        <input id="publisher" type="text" name="publisher" class="form-control" placeholder="Publisher">
+    </div>
+    <div>
+        <input type="button" value="Search" id="search-advance" class="btn btn-primary">
+    </div>
+</section>
+<section>
+    <ul id="viewBooks" class="list-group list-group-flush"></ul>
+</section>
+{% endblock %}

@@ -1,57 +1,35 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Home</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    </head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <header>
-                    <h1>Books <span class="badge badge-pill badge-secondary">Create</span></h1>
-                </header>
-                <nav class="nav justify-content-center">
-                    <a class="nav-link" href="/">Home</a>
-                    <a class="nav-link disabled" href="/book">Create</a>
-                    <a class="nav-link" href="/search">Search Advance</a>
-                </nav>
-                <section>
-                    <form action="/book" method="post">
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input id="title" type="text" name="title" class="form-control" placeholder="Title">
-                        </div>
-                        <div class="form-group">
-                            <label for="author">Author</label>
-                            <input id="author" type="text" name="author" class="form-control" placeholder="Author">
-                        </div>
-                        <div class="form-group">
-                            <label for="publisher_id">Publisher</label>
-                            <select name="publisher_id" id="publisher_id"  class="form-control">
-                                {% for publisher in publishers %}
-                                <option value="{{publisher.id}}">{{publisher.name}}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="price">Price</label>
-                            <input id="price" type="number" name="price"  class="form-control" placeholder="Publisher">
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Add" class="btn btn-primary">
-                        </div>
-                    </form>
-                </section>
-            </div>
+{% extends 'listbook.html' %}
+
+{% block Home %}
+Create
+{% endblock %}
+
+{% block content %}
+<section>
+    <form action="/book" method="post">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input id="title" type="text" name="title" class="form-control" placeholder="Title">
         </div>
-    </div>
-</body>
-</html>
-<script
-src="https://code.jquery.com/jquery-3.3.1.js"
-integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-crossorigin="anonymous">
-</script>
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input id="author" type="text" name="author" class="form-control" placeholder="Author">
+        </div>
+        <div class="form-group">
+            <label for="publisher_id">Publisher</label>
+            <select name="publisher_id" id="publisher_id"  class="form-control">
+                {% for publisher in publishers %}
+                <option value="{{publisher.id}}">{{publisher.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input id="price" type="number" name="price"  class="form-control" placeholder="Publisher">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add" class="btn btn-primary">
+        </div>
+    </form>
+</section>
+{% endblock %}
